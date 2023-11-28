@@ -1,22 +1,23 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ParkDataLayer.Model {
     public class Park {
         [Key]
-        [StringLength(20)]
+        [Column(TypeName = "nvarchar(20)")]
         public string Id { get; set; }
 
         [Required]
-        [StringLength(250)]
+        [Column(TypeName = "nvarchar(250)")]
         public string Naam { get; set; }
 
-        [StringLength(500)]
+        [Column(TypeName = "nvarchar(500)")]
         public string Locatie { get; set; } 
         
         // een park kan meerdere huizen hebben
         
-        public List<Huis> Huizen { get; set; } = new List<Huis>();
+        public ICollection<Huis> Huizen { get; set; } = new List<Huis>();
         
         public Park() { }
         

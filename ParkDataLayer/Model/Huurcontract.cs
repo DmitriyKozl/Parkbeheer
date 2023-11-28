@@ -1,9 +1,12 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ParkDataLayer.Model {
     public class Huurcontract {
-        [Key] [StringLength(25)] public string Id { get; set; }
+        [Key] 
+        [Column(TypeName = "nvarchar(25)")]
+        public string Id { get; set; }
 
         [Required] public DateTime StartDatum { get; set; }
 
@@ -25,11 +28,16 @@ namespace ParkDataLayer.Model {
 
         public Huurcontract() { }
 
-        public Huurcontract(string id, DateTime startDatum, DateTime eindDatum, int termijnVerblijf) {
+        public Huurcontract(string id, DateTime startDatum, DateTime eindDatum, int termijnVerblijf, int huisId, Huis huis, int huurderId, Huurder huurder) {
             Id = id;
             StartDatum = startDatum;
             EindDatum = eindDatum;
             TermijnVerblijf = termijnVerblijf;
+            HuisId = huisId;
+            Huis = huis;
+            HuurderId = huurderId;
+            Huurder = huurder;
+            
             
             
         }

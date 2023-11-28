@@ -19,22 +19,22 @@ namespace ParkDataLayer.DataContext {
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-          //
-          // // 1 park heeft meerdere huizen  
-          //   modelBuilder.Entity<Park>()
-          //       .HasMany(p => p.Huizen)
-          //       .WithOne(h => h.Park);
-          //
-          //   // Huis kan meerder huurcontracten hebben
-          //   modelBuilder.Entity<Huis>()
-          //       .HasMany(h => h.Huurcontracten)
-          //       .WithOne(hc => hc.Huis);
-          //
-          //   // Een huurcontract is gebonden aan een huurder
-          //   modelBuilder.Entity<Huurcontract>()
-          //       .HasOne(hc => hc.Huurder)
-          //       .WithMany()
-          //       .HasForeignKey(hc => hc.HuurderId); // foreign key
+            // 1 park heeft meerdere huizen
+            modelBuilder.Entity<Park>()
+                .HasMany(p => p.Huizen)
+                .WithOne(h => h.Park);
+
+            // Een huurcontract is gebonden aan een huis en een huurder
+            modelBuilder.Entity<Huurcontract>()
+                .HasOne(hc => hc.Huis)
+                .WithMany(h => h.Huurcontracten)
+                .HasForeignKey(hc => hc.HuisId);
+
+            modelBuilder.Entity<Huurcontract>()
+                .HasOne(hc => hc.Huurder)
+                .WithMany()
+                .HasForeignKey(hc => hc.HuurderId); // foreign key
+        
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
             optionsBuilder.UseSqlServer(_connectionstring)

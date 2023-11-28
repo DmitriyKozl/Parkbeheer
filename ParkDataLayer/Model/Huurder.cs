@@ -7,13 +7,18 @@ namespace ParkDataLayer.Model {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        [Required] [StringLength(100)] public string Naam { get; set; }
+        [Required]
+        [Column(TypeName = "nvarchar(100)")]
+        public string Naam { get; set; }
 
-        [StringLength(100)] public string Telefoon { get; set; }
+        [Column(TypeName = "nvarchar(100)")]
+        public string Telefoon { get; set; }
 
-        [StringLength(100)] public string Email { get; set; }
+        [Column(TypeName = "nvarchar(100)")]
+        public string Email { get; set; }
 
-        [StringLength(100)] public string Adres { get; set; }
+        [Column(TypeName = "nvarchar(100)")]
+        public string Adres { get; set; }
  
         public Huurder() { }
 

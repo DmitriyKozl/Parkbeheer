@@ -26,19 +26,21 @@ namespace ParkDataLayer.Model {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        [StringLength(250)]
+        [Column(TypeName = "nvarchar(250)")]
         public string Straat { get; set; } 
 
         [Required]
         public int Nummer { get; set; }
 
         [Required]
+        [Column(TypeName = "bit")]
+
         public bool Actief { get; set; }
         public Park Park { get; set; }
 
         
         // een huis kan meerdere huurcontracten hebben
-        public List<Huurcontract> Huurcontracten { get; set; } = new List<Huurcontract>();
+        public ICollection<Huurcontract> Huurcontracten { get; set; } = new List<Huurcontract>();
         
      
     }
