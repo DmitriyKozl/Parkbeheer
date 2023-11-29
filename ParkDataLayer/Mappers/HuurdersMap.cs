@@ -26,7 +26,7 @@ namespace ParkDataLayer.Mappers {
             }
         }
 
-        public static HuurderEF MapToData(Huurder model, ParkDataContext ctx) {
+        public static HuurderEF MapToData(Huurder model) {
             try {
                 return new HuurderEF(
                     model.Id,

@@ -41,7 +41,7 @@ namespace ParkDataLayer.Mappers {
                 ParkEF park = ctx.Parken.FirstOrDefault(x => x.Id == model.Huis.Park.Id);
 
                 if (huis == null) huis = HuisMap.MapToData(model.Huis, ctx);
-                if (huurder == null) huurder = HuurdersMap.MapToData(model.Huurder, ctx);
+                if (huurder == null) huurder = HuurdersMap.MapToData(model.Huurder);
                 if (park == null) park = ParkMap.MapToData(model.Huis.Park);
 
                 huis.Park = park;

@@ -38,14 +38,15 @@ namespace ParkDataLayer.DataContext {
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
             optionsBuilder.UseSqlServer(_connectionstring)
-                .LogTo(
-                    Console.WriteLine,
-                    Microsoft
-                        .Extensions
-                        .Logging
-                        .LogLevel
-                        .Information
-                    );
+            .LogTo(
+                Console.WriteLine,
+                Microsoft
+                    .Extensions
+                    .Logging
+                    .LogLevel
+                    .Information
+                )
+            ;
         }
     }
 }
